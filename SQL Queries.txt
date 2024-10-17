@@ -1,12 +1,16 @@
-Request 1:
-
+REQUEST 1: Provide the list of markets in which customer "Atliq Exclusive" operates its business in the APAC region.
+OUTPUT:
           SELECT distinct market FROM dim_customer 
           WHERE customer = "Atliq Exclusive" and region = "APAC"
           ORDER BY market;
 
 
-Request 2:
-
+REQUEST 2: What is the percentage of unique product increase in 2021 vs. 2020? 
+          -- The final output contains these fields
+          -- unique_products_2020
+          -- unique_products_2021
+          -- percentage_chg
+OUTPUT:
          WITH cte1 AS (
                        SELECT count(distinct product_code) AS unique_products_2020
                        FROM fact_sales_monthly
@@ -27,8 +31,11 @@ Request 2:
 
 
 
-Request 3:
-
+REQUEST 3:  Provide a report with all the unique product counts for each segment and sort them in descending order of product counts. 
+          -- The final output contains 2 fields, 
+          -- segment 
+          -- product_count
+OUTPUT:
          SELECT 
               segment,
               count(distinct product_code) AS  product_count
@@ -39,8 +46,13 @@ Request 3:
 
 
 
-Request 4:
-
+REQUEST 4: Follow-up: Which segment had the most increase in unique products in 2021 vs 2020? 
+          -- The final output contains these fields, 
+          -- segment 
+          -- product_count_2020 
+          -- product_count_2021 
+          -- difference
+OUTPUT:
          WITH cte AS (
                      SELECT p.segment,
                      count(distinct (case when fiscal_year = 2020 then m.product_code end)) as unique_products_2020 ,
@@ -56,8 +68,12 @@ Request 4:
 
 
 
-Request 5:
-
+REQUEST 5: Get the products that have the highest and lowest manufacturing costs. 
+          -- The final output should contain these fields, 
+          -- product_code 
+          -- product 
+          -- manufacturing_cost
+OUTPUT:
          SELECT 
               m.product_code ,
               p.product ,
@@ -75,8 +91,13 @@ Request 5:
 
 
 
-Request 6:
-
+REQUEST 6: Generate a report which contains the top 5 customers who received an average high pre_invoice_discount_pct for the fiscal 
+           year 2021 and in the Indian market. 
+          -- The final output contains these fields, 
+          -- customer_code 
+          -- customer 
+          -- average_discount_percentage
+OUTPUT:
          SELECT d.customer_code,
                 c.customer,
                 CONCAT(round(avg(pre_invoice_discount_pct)*100,2),'%') AS avg_dis_pct
@@ -91,8 +112,13 @@ Request 6:
 
 
 
-Request 7:
-
+REQUEST 7: Get the complete report of the Gross sales amount for the customer “Atliq Exclusive” for each month. 
+          -- This analysis helps to get an idea of low and high-performing months and take strategic decisions. 
+          -- The final report contains these columns: 
+          -- Month 
+          -- Year 
+          -- Gross sales Amount
+OUTPUT:
          SELECT 
                monthname(m.date) AS Month,
                m.fiscal_year AS Year,
@@ -108,8 +134,11 @@ Request 7:
          ;
 
 
-Request 8:
-
+REQUEST 8: In which quarter of 2020, got the maximum total_sold_quantity? 
+          -- The final output contains these fields sorted by the total_sold_quantity,
+          -- Quarter 
+          -- total_sold_quantity
+OUTPUT:
          SELECT (CASE
                      WHEN month(date) IN (9,10,11) THEN "Q1"
 		     WHEN month(date) IN (12,1,2) THEN "Q2"
@@ -124,8 +153,12 @@ Request 8:
          ;
 
 
-Request 9:
-
+REQUEST 9: Which channel helped to bring more gross sales in the fiscal year 2021 and the percentage of contribution? 
+          -- The final output contains these fields, 
+          -- channel 
+          -- gross_sales_mln 
+          -- percentage
+OUTPUT:
          WITH cte1 AS (
                        SELECT
                              c.channel,
@@ -147,8 +180,14 @@ Request 9:
 
 
 
-Request 10:
-
+REQUEST 10: Get the Top 3 products in each division that have a high total_sold_quantity in the fiscal_year 2021? 
+           -- The final output contains these fields, 
+           -- division
+           -- product_code
+           -- product
+           -- total_sold_quantity
+           -- rank_order
+OUTPUT:
           WITH cte1 AS
                      (
                       SELECT p.division, s.product_code, p.product, SUM(s.sold_quantity) AS total_sold_quantity
