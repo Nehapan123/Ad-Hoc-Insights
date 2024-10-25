@@ -5,6 +5,8 @@ OUTPUT:
           ORDER BY market;
 
 
+
+
 REQUEST 2: What is the percentage of unique product increase in 2021 vs. 2020? 
           -- The final output contains these fields
           -- unique_products_2020
@@ -31,6 +33,7 @@ OUTPUT:
 
 
 
+
 REQUEST 3:  Provide a report with all the unique product counts for each segment and sort them in descending order of product counts. 
           -- The final output contains 2 fields, 
           -- segment 
@@ -43,6 +46,7 @@ OUTPUT:
          GROUP BY segment
          ORDER BY product_count DESC
          ;
+
 
 
 
@@ -65,6 +69,7 @@ OUTPUT:
                 unique_products_2021 - unique_products_2020 AS difference
          FROM cte
          ORDER BY difference DESC;
+
 
 
 
@@ -91,6 +96,7 @@ OUTPUT:
 
 
 
+
 REQUEST 6: Generate a report which contains the top 5 customers who received an average high pre_invoice_discount_pct for the fiscal 
            year 2021 and in the Indian market. 
           -- The final output contains these fields, 
@@ -109,6 +115,7 @@ OUTPUT:
          GROUP BY customer_code, customer
          ORDER BY avg(pre_invoice_discount_pct) DESC
          LIMIT 5;
+
 
 
 
@@ -134,6 +141,8 @@ OUTPUT:
          ;
 
 
+
+
 REQUEST 8: In which quarter of 2020, got the maximum total_sold_quantity? 
           -- The final output contains these fields sorted by the total_sold_quantity,
           -- Quarter 
@@ -151,6 +160,8 @@ OUTPUT:
          GROUP BY Quarter
          ORDER BY total_sold_qty DESC
          ;
+
+
 
 
 REQUEST 9: Which channel helped to bring more gross sales in the fiscal year 2021 and the percentage of contribution? 
@@ -177,6 +188,8 @@ OUTPUT:
          FROM cte1
          ORDER BY pct_contribution DESC
          ;
+
+
 
 
 
