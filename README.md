@@ -1,6 +1,6 @@
 # Ad-Hoc-Insights
 ## My Task:
-As a hypothetical candidate for this position, my task was to:
+My task was to:
 
 - Review the document "ad-hoc-requests.pdf," which included 10 ad hoc business requests that needed insights.
 - Write and execute SQL queries to address these requests.
