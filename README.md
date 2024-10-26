@@ -21,3 +21,14 @@ My task was to:
 
 ## Outcome:
 In this project, I showcased my ability to manage complex data queries and present insights in a clear and engaging way. This experience not only sharpened my technical skills but also improved my ability to effectively communicate data-driven insights.
+
+## Repository Contents:
+
+- Ad-hoc-requests.pdf: A document listing 10 ad hoc business requests.
+- SQL Queries: A folder with SQL scripts for data extraction.
+- Power BI Visualizations: A folder containing Power BI files with various data visualizations.
+- Presentation: A file that highlights insights and recommendations.
+
+---
+
+This project is a demonstration of my skills in data analysis, SQL querying, data visualization, and presentation design in a business context. It showcases my ability to derive and communicate actionable insights from data, which is crucial for data-driven decision-making in a corporate environment.
